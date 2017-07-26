@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Slab" rel="stylesheet">
-
     <meta name="keywords" content="<%= @seo_keywords %>" />
-
-    <%= favicon_link_tag 'favicons/favicon.ico' %>
 
     <%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-    <%= render 'shared/blog_nav' %>
-    <%= render 'shared/blog_masthead' %>
+    <% if current_user.is_a?(User) %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Register", new_user_registration_path %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
 
-    <div class="container">
+    <%= yield %>
 
-      <div class="row">
+    <%= render "shared/nav", location: 'bottom' %>
 
-        <%= yield %>
-
-        <%= render 'shared/blog_sidebar' %>
-      </div>
-
-      <%= render 'shared/blog_footer' %>
-
-      <%= alerts %>
-    </div>
+    <% if session[:source] %>
+      <p>Thanks for visiting me from <%= session[:source] %></p>
+    <% end %>
   </body>
 </html>
