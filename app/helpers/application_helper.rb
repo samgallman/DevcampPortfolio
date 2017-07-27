@@ -15,4 +15,8 @@ module ApplicationHelper
       content_tag(:p, greeting, class: "source-greeting")
     end
   end
+  
+  def copyright_generator
+     GallmanViewTool::Renderer.copyright 'Samantha Gallman', 'All rights reserved'
+  end
 end

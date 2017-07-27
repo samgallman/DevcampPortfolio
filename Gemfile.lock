@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/samgallman/GallmanViewTool
+  revision: fc47ed9bd48c755c8b602e7a9a2544ea95e6df97
+  specs:
+    GallmanViewTool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -173,6 +179,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  GallmanViewTool!
   bootstrap (~> 4.0.0.alpha6)
   byebug
   coffee-rails (~> 4.2)
